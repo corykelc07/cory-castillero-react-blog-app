@@ -6,19 +6,24 @@ import ContactPage from './contacts/ContactPage';
 import CommonLayout from './layouts/CommonLayout';
 import PostList from './postList/PostList';
 import Homepage from './homepage/Homepage';
+import Login from './login/Login';
+import { AuthProvider } from './authWrapper/AuthProvider';
 
 
 function App() {
   return (
     <ThemeProvider> 
-      <Routes>
-        <Route element={<CommonLayout />}>
-          <Route path="/" element={<Homepage/>} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/posts" element={<PostList />} />
-          <Route path="/posts/:post_id" element={<IndividualBlogPost/>} />
-        </Route>
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route element={<CommonLayout />}>
+              <Route path="/" element={<Homepage/>} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/posts" element={<PostList />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/posts/:post_id" element={<IndividualBlogPost/>} />
+            </Route>
+          </Routes>
+        </AuthProvider>
     </ThemeProvider>
   );
 }

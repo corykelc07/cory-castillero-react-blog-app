@@ -11,18 +11,22 @@ function ContactPage() {
 
     const submitForm = (e) => {
         e.preventDefault();
-        if (formInput.name.length < 5){
-            console.error("Name should be min length of 5 characters");
+        if (formInput.name.length < 5 ){
+            alert("Name should be min length of 5 characters");
             return;
         }
-        
-        console.log(formInput);
+        setFormInput({
+            name: "",
+            email: "",
+            message: "",
+        })
     }
     return (
         <div className="p-4">
             <form className="flex flex-col gap-2" onSubmit={submitForm}>
                 <input 
                     placeholder="Name" 
+                    required
                     className={formClass} 
                     value={formInput.name} 
                     onChange={e => setFormInput({...formInput, name: e.target.value})}
@@ -31,6 +35,8 @@ function ContactPage() {
                     placeholder="Email" 
                     className={formClass}
                     value={formInput.email}
+                    type="email"
+                    required
                     onChange={e => setFormInput({...formInput, email: e.target.value})} 
                 />
                 <textarea 

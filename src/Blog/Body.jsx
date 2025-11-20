@@ -40,8 +40,6 @@ function Body () {
     },[params.post_id])
 
 
-//console.log("comments: ", comments)
-
 
     return (
         <div className="max-w-3xl mx-auto bg-white rounded-xl shadow border border-gray-200 p-6 mt-10">
